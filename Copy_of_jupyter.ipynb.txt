@@ -1,0 +1,332 @@
+{
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 49,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2TC6ykBh0-CL",
+        "outputId": "5ea48725-f197-4ca2-9b80-c334c7282bed"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Name:sakshi\n",
+            "Roll:7\n",
+            "Marks:85\n"
+          ]
+        }
+      ],
+      "source": [
+        "f=open(\"student.txt\",\"a\")\n",
+        "name=input(\"Name:\")\n",
+        "roll=input(\"Roll:\")\n",
+        "marks=input(\"Marks:\")\n",
+        "f.write(name+\",\"+roll+\",\"+marks+\"\\n\")\n",
+        "f.close()\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 50,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vXWObrNm2fV6",
+        "outputId": "740bcbfc-278d-4b9d-f48e-cb903e219dd7"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter Roll NO:7\n",
+            "Record Found\n",
+            "sakshi,7,35\n",
+            "\n",
+            "Record Found\n",
+            "sakshi,7,35\n",
+            "\n",
+            "Record Found\n",
+            "sakshi,7,85\n",
+            "\n"
+          ]
+        }
+      ],
+      "source": [
+        "roll=input(\"Enter Roll NO:\")\n",
+        "f=open(\"student.txt\",\"r\")\n",
+        "for line in f:\n",
+        "  if roll in line:\n",
+        "    print(\"Record Found\")\n",
+        "    print(line)\n",
+        "f.close()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 52,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uHHtXujF3tfJ",
+        "outputId": "50edf2ae-9e65-4ff5-cd18-1b918d07a65f"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Roll No:7\n",
+            "New Marks:90\n"
+          ]
+        }
+      ],
+      "source": [
+        "roll=input(\"Roll No:\")\n",
+        "marks=input(\"New Marks:\")\n",
+        "f=open(\"student.txt\",\"r\")\n",
+        "lines=f.readlines()\n",
+        "f.close()\n",
+        "f=open(\"student.txt\",\"w\")\n",
+        "for line in lines:\n",
+        "  data=line.strip().split(\",\")\n",
+        "  if data[1]==roll:\n",
+        "    data[2]=marks\n",
+        "    f.write(\",\".join(data)+\"\\n\")\n",
+        "  f.close()\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 54,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "MKQBO3MGR44K",
+        "outputId": "0160e69f-f1d2-4d48-aa87-3a570b6e2e40"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Roll to delete:8\n"
+          ]
+        }
+      ],
+      "source": [
+        "roll=input(\"Roll to delete:\")\n",
+        "data=[]\n",
+        "with open(\"student.txt\",\"r\")as f:\n",
+        " for line in f:\n",
+        "  if roll not in line:\n",
+        "   data.append(line)\n",
+        "with open(\"student.txt\",\"w\") as f:\n",
+        "  f.writelines(data)\n",
+        "  f.close()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "f=open(\"student.txt\",\"r\")\n",
+        "print(f.read())\n",
+        "f.close()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4bc1t8UUblL6",
+        "outputId": "ca7305f0-e4ee-441f-b6e7-96509d3b2e04"
+      },
+      "execution_count": 55,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "sakshi,7,90\n",
+            "\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "f=open(\"student.txt\",\"r\")\n",
+        "for line in f:\n",
+        "  data=line.strip().split(\",\")\n",
+        "  if int(data[2])>75:\n",
+        "    print(line)\n",
+        "f.close()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pZFxzv67dNXf",
+        "outputId": "f926b02a-737b-42f6-d77f-ba7bc3b9df1f"
+      },
+      "execution_count": 56,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "sakshi,7,90\n",
+            "\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "f=open(\"student.txt\",\"r\")\n",
+        "students=[]\n",
+        "for line in f:\n",
+        " students.append(line.strip().split(\",\"))\n",
+        "f.close()\n",
+        "student.sort(key=lambda x:int(x[2]),reverse=True)\n",
+        "for i in range(min(3,len(students))):\n",
+        "    print(students[i])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "KicDxyJGrOqj",
+        "outputId": "94c0c492-3c32-498e-f72a-c1561a8879e2"
+      },
+      "execution_count": 72,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['sakshi', '7', '90']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "f=open(\"student.txt\",\"r\")\n",
+        "data=f.read()\n",
+        "f.close()\n",
+        "b=open(\"backup.txt\",\"w\")\n",
+        "b.write(data)\n",
+        "b.close()\n",
+        "print(\"Backup Created\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "cRdtexzsuwI7",
+        "outputId": "18d7bfd3-21be-44fa-ce2b-f5ef6f741a1d"
+      },
+      "execution_count": 73,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Backup Created\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "f=open(\"student.txt\",\"r\")\n",
+        "above90=0\n",
+        "below35=0\n",
+        "for line in f:\n",
+        "  data=line.strip().split(\",\")\n",
+        "  marks=int(data[2])\n",
+        "  if marks>90:\n",
+        "    above90+=1\n",
+        "  if marks<35:\n",
+        "    below35+=1\n",
+        "print(\"Above 90=\",above90)\n",
+        "print(\"Below 35=\", below35)\n",
+        "f.close()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "5CA_8y4bwhO7",
+        "outputId": "11a2d8a2-028f-4e88-bf44-03b53e6f300b"
+      },
+      "execution_count": 76,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Above 90= 0\n",
+            "Below 35= 0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "f=open(\"student.txt\",\"r\")\n",
+        "students=[]\n",
+        "for line in f:\n",
+        "  students.append(line.strip().split(\",\"))\n",
+        "f.close()\n",
+        "students.sort(key=lambda x:int(x[2]),reverse=True)\n",
+        "for s in students:\n",
+        "  print(s[0],s[1],s[2])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "shX34St_yBsX",
+        "outputId": "d14f9068-0e15-4683-da69-224e9847abd6"
+      },
+      "execution_count": 77,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "sakshi 7 90\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
