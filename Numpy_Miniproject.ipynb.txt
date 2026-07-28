@@ -1,0 +1,332 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "t1v4YiQF5XEV",
+        "outputId": "b360a643-bfdc-419c-f684-6e4e6235823a"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[63 82 82 93 50 54 62 97 81 92 95 67 46 54 61 54 64 84 91 52 86 36 51 53\n",
+            " 76 96 48 63 36 81 73 47 52 98 43 96 51 76 87 48 77 52 84 84 50 89 42 47\n",
+            " 99 52]\n"
+          ]
+        }
+      ],
+      "source": [
+        "#generate marks for 50 student\n",
+        "import numpy as np\n",
+        "marks=np.random.randint(35,101,50)\n",
+        "print(marks)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#calculate total,average highest,lowest\n",
+        "import numpy as np\n",
+        "marks=np.array([45,31,64,87,93])\n",
+        "print(\"Total:\",np.sum(marks))\n",
+        "print(\"Average:\",np.mean(marks))\n",
+        "print(\"Highst:\",np.max(marks))\n",
+        "print(\"Lowest:\",np.min(marks))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9VjEbd-A6VCn",
+        "outputId": "474781ef-ff83-4d74-d901-79add560a109"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Total: 320\n",
+            "Average: 64.0\n",
+            "Highst: 93\n",
+            "Lowest: 31\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#count above 75,below 35,between 35-75\n",
+        "import numpy as np\n",
+        "marks=np.array([79,47,89,61,35,85,20,75])\n",
+        "print(\"Above 75:\",np.sum(marks>75))\n",
+        "print(\"Below 35:\",np.sum(marks<35))\n",
+        "print(\"Between 35-75:\",np.sum((marks>=35)&(marks<=75)))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "p_XzjBG37f29",
+        "outputId": "a6fe5f98-8ade-453d-8bf2-a1e765065950"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Above 75: 3\n",
+            "Below 35: 1\n",
+            "Between 35-75: 4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#assign grades\n",
+        "import numpy as np\n",
+        "marks=np.array([32,47,58,89,94,77,65])\n",
+        "grades=np.where(marks>=90,'A',\n",
+        "       np.where(marks>=75,'B',\n",
+        "       np.where(marks>=60,'C',\n",
+        "       np.where(marks>=35,'D',\n",
+        "'F'))))\n",
+        "print(\"Marks:\",marks)\n",
+        "print(\"Grades:\",grades)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "L0MYkEu_9HGE",
+        "outputId": "360e3f00-1f47-4676-c63c-f236c0163bd5"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Marks: [32 47 58 89 94 77 65]\n",
+            "Grades: ['F' 'D' 'D' 'B' 'A' 'B' 'C']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#display top 5 marks\n",
+        "import numpy as np\n",
+        "marks=np.array([76,43,54,76,56,35,98,34])\n",
+        "top5=np.sort(marks)[-5:][::-1]\n",
+        "print(top5)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LfzpSUJV_XaT",
+        "outputId": "b8bb63df-ad6e-48aa-b942-aaafa159619f"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[98 76 76 56 54]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#display bottom 5 marks\n",
+        "import numpy as np\n",
+        "marks=np.array([43,23,45,76,98,78,56,75,])\n",
+        "bottom5=np.sort(marks)[:5]\n",
+        "print(bottom5)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "G2uN-OKyA8aL",
+        "outputId": "41361e86-d972-4d38-ccbe-e323bc5b5c68"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[23 43 45 56 75]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#find median and standard deviation\n",
+        "import numpy as np\n",
+        "marks=np.array([43,23,45,76,98,78,56,75])\n",
+        "print(\"Median:\",np.median(marks))\n",
+        "print(\"Standard Deviation:\",np.std(marks))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IriHvgxNJyDk",
+        "outputId": "5dcb2394-6959-465d-8b19-f1e3153d042b"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Median: 65.5\n",
+            "Standard Deviation: 22.70324866621515\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#create 5-subject marks matrix and calculate totals\n",
+        "import numpy as np\n",
+        "marks=np.array([[70,60,50,90,85],[60,65,70,75,80],[90,85,95,77,67]])\n",
+        "print(\"Marks Matrix:\")\n",
+        "print(marks)\n",
+        "total=np.sum(marks,axis=1)\n",
+        "print(\"Total Marks:\",total)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "HMnlDQQIOSv_",
+        "outputId": "aa7f01ef-6e22-494d-a124-05b22c5b2630"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Marks Matrix:\n",
+            "[[70 60 50 90 85]\n",
+            " [60 65 70 75 80]\n",
+            " [90 85 95 77 67]]\n",
+            "Total Marks: [355 350 414]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#find topper in each subject\n",
+        "import numpy as np\n",
+        "marks=np.array([[88,78,67,98,86],[60,65,75,70,80],[85,80,90,95,70]])\n",
+        "topper=np.max(marks,axis=0)\n",
+        "print(\"Top marks in each subject:\")\n",
+        "print(topper)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Jxa_BJrfZZwo",
+        "outputId": "05c98b6f-6892-4d31-cc4b-25cb53a18cf8"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Top marks in each subject:\n",
+            "[88 80 90 98 86]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#generate report card with total,average,percentage and gaade\n",
+        "import numpy as np\n",
+        "marks=np.array([85,75,65,50,90])\n",
+        "total=np.sum(marks)\n",
+        "average=np.mean(marks)\n",
+        "percentage=total/5\n",
+        "if percentage>=90:\n",
+        "  grade='A'\n",
+        "elif percentage>=75:\n",
+        "  grade='B'\n",
+        "elif percentage>=60:\n",
+        "  grade='C'\n",
+        "elif percentage>=35:\n",
+        "  grade='D'\n",
+        "else:\n",
+        "    grade='F'\n",
+        "print(\"Marks:\",marks)\n",
+        "print(\"Total:\",total)\n",
+        "print(\"Average:\",average)\n",
+        "print(\"Percentage:\",percentage)\n",
+        "print(\"Grade:\",grade)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "X_Y8fWdIjZk1",
+        "outputId": "901be2bf-ba57-43e4-c998-4eb47ed13b0d"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Marks: [85 75 65 50 90]\n",
+            "Total: 365\n",
+            "Average: 73.0\n",
+            "Percentage: 73.0\n",
+            "Grade: C\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
